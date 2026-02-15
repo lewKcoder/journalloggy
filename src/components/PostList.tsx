@@ -17,8 +17,8 @@ export const PostList: React.FC<PostListProps> = ({ posts, onPostClick }) => {
           Code & Design.
         </h1>
         <p className="text-lg leading-relaxed max-w-xl opacity-60">
-          これは個人のためのデジタル・ログです。
-          日々の技術的な気づきや、思索の断片をここに記録します。
+          <span className="flex">これは個人のためのデジタル・ログ。</span>
+          各プロダクトのリリースノートやブログ、日々の技術的な気づきや思索の断片をここに記録します。
         </p>
       </header>
 

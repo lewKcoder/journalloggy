@@ -18,8 +18,8 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
           Code & Design.
         </h1>
         <p className="text-lg leading-relaxed max-w-xl opacity-60">
-          これは個人のためのデジタル・ログです。
-          日々の技術的な気づきや、思索の断片をここに記録します。
+          <span className="flex">これは個人のためのデジタル・ログ。</span>
+          各プロダクトのリリースノートやブログ、日々の技術的な気づきや思索の断片をここに記録します。
         </p>
       </header>
 
@@ -33,7 +33,7 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
         {projects.map((project) => (
           <article
             key={project.id}
-            className="group cursor-pointer rounded-xl border border-neutral-50 dark:border-neutral-800/60 overflow-hidden hover:border-neutral-200 dark:hover:border-neutral-700 transition-colors duration-300"
+            className="group cursor-pointer rounded-xl border border-neutral-100/50 dark:border-neutral-800/30 overflow-hidden hover:border-neutral-200 dark:hover:border-neutral-700 transition-colors duration-300"
             onClick={() => onProjectClick(project)}
           >
             <div className="aspect-[16/9] overflow-hidden bg-neutral-100 dark:bg-neutral-900">

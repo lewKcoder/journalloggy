@@ -29,6 +29,14 @@ function resolveRoute(url: string): { view: View; project: Project | null; post:
     if (project && post) return { view: "post", project, post };
   }
 
+  // /projects/{projectId}/terms, /projects/{projectId}/privacy, /projects/{projectId}/legal
+  if (segments[0] === "projects" && segments[1] && segments[2]) {
+    const project = PROJECTS.find((p) => p.id === segments[1]) ?? null;
+    if (project && segments[2] === "terms") return { view: "terms", project, post: null };
+    if (project && segments[2] === "privacy") return { view: "privacy", project, post: null };
+    if (project && segments[2] === "legal") return { view: "commercial", project, post: null };
+  }
+
   // /projects/{projectId}
   if (segments[0] === "projects" && segments[1]) {
     const project = PROJECTS.find((p) => p.id === segments[1]) ?? null;
@@ -41,11 +49,6 @@ function resolveRoute(url: string): { view: View; project: Project | null; post:
     const post = postId ? MOCK_POSTS.find((p) => p.id === postId) ?? null : null;
     if (post) return { view: "post", project: null, post };
   }
-
-  // Legal pages
-  if (segments[0] === "terms") return { view: "terms", project: null, post: null };
-  if (segments[0] === "privacy") return { view: "privacy", project: null, post: null };
-  if (segments[0] === "commercial-transaction") return { view: "commercial", project: null, post: null };
 
   return { view: "home", project: null, post: null };
 }
@@ -138,6 +141,7 @@ function App() {
             posts={projectPosts}
             onBack={navigateToHome}
             onPostClick={navigateToPost}
+            onNavigate={navigate}
           />
         )}
         {view === "post" && currentPost && (
@@ -147,18 +151,18 @@ function App() {
             isDarkMode={isDarkMode}
           />
         )}
-        {view === "terms" && (
-          <TermsOfService isDarkMode={isDarkMode} onBack={navigateToHome} />
+        {view === "terms" && currentProject && (
+          <TermsOfService isDarkMode={isDarkMode} onBack={() => navigate(`/projects/${currentProject.id}`)} />
         )}
-        {view === "privacy" && (
-          <PrivacyPolicy isDarkMode={isDarkMode} onBack={navigateToHome} />
+        {view === "privacy" && currentProject && (
+          <PrivacyPolicy isDarkMode={isDarkMode} onBack={() => navigate(`/projects/${currentProject.id}`)} />
         )}
-        {view === "commercial" && (
-          <CommercialTransaction isDarkMode={isDarkMode} onBack={navigateToHome} />
+        {view === "commercial" && currentProject && (
+          <CommercialTransaction isDarkMode={isDarkMode} onBack={() => navigate(`/projects/${currentProject.id}`)} />
         )}
       </main>
 
-      <Footer isDarkMode={isDarkMode} onNavigate={navigate} />
+      <Footer isDarkMode={isDarkMode} onNavigate={navigate} project={currentProject} />
     </div>
   );
 }

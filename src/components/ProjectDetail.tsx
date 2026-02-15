@@ -6,6 +6,7 @@ interface ProjectDetailProps {
   posts: Post[];
   onBack: () => void;
   onPostClick: (post: Post) => void;
+  onNavigate: (path: string) => void;
 }
 
 export const ProjectDetail: React.FC<ProjectDetailProps> = ({
@@ -13,6 +14,7 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
   posts,
   onBack,
   onPostClick,
+  onNavigate,
 }) => {
   const formatDate = (date: string) => date.replace(/-/g, ".");
 
@@ -53,28 +55,6 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
         )}
       </header>
 
-      {project.pricing && (
-        <>
-          <div className="h-px w-12 bg-neutral-200 dark:bg-neutral-800 mb-10" />
-          <p className="text-[12px] font-mono opacity-40 uppercase tracking-widest mb-6">
-            Pricing
-          </p>
-          <div className="rounded-xl border border-neutral-100 dark:border-neutral-800 p-6 mb-16">
-            <div className="flex items-baseline gap-1 mb-2">
-              <span className="text-3xl font-black tracking-tight">
-                {project.pricing.price}
-              </span>
-              <span className="text-sm opacity-50">
-                / {project.pricing.period}
-              </span>
-            </div>
-            <p className="text-sm opacity-50 leading-relaxed">
-              {project.pricing.description}
-            </p>
-          </div>
-        </>
-      )}
-
       <div className="h-px w-12 bg-neutral-200 dark:bg-neutral-800 mb-10" />
 
       <p className="text-[12px] font-mono opacity-40 uppercase tracking-widest mb-8">
@@ -103,6 +83,40 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
             </div>
           </article>
         ))}
+      </div>
+
+      <div className="h-px w-12 bg-neutral-200 dark:bg-neutral-800 mt-16 mb-10" />
+      <div className="flex items-center space-x-8 text-[11px] font-mono opacity-30 uppercase tracking-widest">
+        <a
+          href={`/projects/${project.id}/terms`}
+          onClick={(e) => {
+            e.preventDefault();
+            onNavigate(`/projects/${project.id}/terms`);
+          }}
+          className="hover:opacity-100 transition-opacity"
+        >
+          Terms
+        </a>
+        <a
+          href={`/projects/${project.id}/privacy`}
+          onClick={(e) => {
+            e.preventDefault();
+            onNavigate(`/projects/${project.id}/privacy`);
+          }}
+          className="hover:opacity-100 transition-opacity"
+        >
+          Privacy
+        </a>
+        <a
+          href={`/projects/${project.id}/legal`}
+          onClick={(e) => {
+            e.preventDefault();
+            onNavigate(`/projects/${project.id}/legal`);
+          }}
+          className="hover:opacity-100 transition-opacity"
+        >
+          Legal
+        </a>
       </div>
     </div>
   );

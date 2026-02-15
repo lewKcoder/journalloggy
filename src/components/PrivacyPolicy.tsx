@@ -54,10 +54,13 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
           <p>当サービスは、以下の情報を収集します。</p>
           <ul className="list-disc pl-6 space-y-2">
             <li>メールアドレス（アカウント管理およびサブスクリプション管理のため）</li>
+            <li>Googleアカウントのプロフィール情報（表示名、プロフィール画像URL）</li>
+            <li>ユーザーがアップロードした画像データおよび関連メタデータ（ラベル、並び順等）</li>
+            <li>サービス設定データ（表示設定、ショートカット設定、記念日データ等）</li>
             <li>決済に関する情報（Stripeを通じて処理され、当サービスはカード番号等を直接保存しません）</li>
           </ul>
           <p className="mt-4">
-            当サービスは、上記以外の利用データ、閲覧履歴、Cookie等の情報は収集しません。
+            当サービスは、閲覧履歴やウェブページの内容を収集しません。Cookieは使用しませんが、Chrome拡張のローカルストレージ（chrome.storage.local）およびIndexedDBを使用してユーザー設定や画像データをブラウザ内に保存します。
           </p>
         </section>
 
@@ -81,12 +84,14 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
             <li>ユーザーの同意がある場合</li>
             <li>法令に基づき開示が必要な場合</li>
             <li>決済処理のためStripeに必要な情報を提供する場合</li>
+            <li>認証処理のためGoogleに必要な情報を提供する場合</li>
+            <li>クラウド同期のためSupabaseに必要な情報を提供する場合（プレミアムプランのみ）</li>
           </ul>
         </section>
 
         <section>
           <h2>4. 第三者サービス</h2>
-          <p>当サービスは、決済処理のためにStripeを利用しています。</p>
+          <p>当サービスは、以下の第三者サービスを利用しています。</p>
           <ul className="list-disc pl-6 space-y-2">
             <li>
               <strong>Stripe</strong> — 決済処理。Stripeのプライバシーポリシーは{" "}
@@ -100,11 +105,48 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
               </a>{" "}
               をご参照ください。
             </li>
+            <li>
+              <strong>Supabase</strong> — 認証、データベース、クラウドストレージ（プレミアムプランのみ）。Supabaseのプライバシーポリシーは{" "}
+              <a
+                href="https://supabase.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-4"
+              >
+                https://supabase.com/privacy
+              </a>{" "}
+              をご参照ください。
+            </li>
+            <li>
+              <strong>Google</strong> — OAuth認証プロバイダー。Googleのプライバシーポリシーは{" "}
+              <a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-4"
+              >
+                https://policies.google.com/privacy
+              </a>{" "}
+              をご参照ください。
+            </li>
           </ul>
         </section>
 
         <section>
           <h2>5. データの保管・セキュリティ</h2>
+          <h3 className="font-bold mt-4 mb-2">ローカル保存</h3>
+          <p>
+            Chrome拡張のローカルストレージ（chrome.storage.local）およびIndexedDBに、画像データ・ユーザー設定・認証情報を保存します。これらのデータはユーザーのブラウザ内にのみ保存されます。
+          </p>
+          <h3 className="font-bold mt-4 mb-2">クラウド保存（プレミアムプランのみ）</h3>
+          <p>
+            プレミアムプランをご利用の場合、Supabaseサーバーに設定データおよび画像データを同期保存します。
+          </p>
+          <h3 className="font-bold mt-4 mb-2">データ保持期間</h3>
+          <p>
+            アカウント削除の請求があった場合、30日以内にすべてのデータを削除します。
+          </p>
+          <h3 className="font-bold mt-4 mb-2">セキュリティ</h3>
           <ul className="list-disc pl-6 space-y-2">
             <li>ユーザーの情報は適切なセキュリティ対策を講じて保管します。</li>
             <li>決済情報はStripeが管理しており、当サービスはカード番号等の機密情報を直接保管しません。</li>
@@ -112,27 +154,46 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
         </section>
 
         <section>
-          <h2>6. ユーザーの権利</h2>
+          <h2>6. Chrome拡張機能の権限について</h2>
+          <p>本サービスは、以下のChrome拡張機能の権限を使用します。</p>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>
+              <code>&lt;all_urls&gt;</code>: 任意のウェブページで画像を表示するために必要です。閲覧履歴やページ内容は収集しません。
+            </li>
+            <li>
+              <code>storage</code>: ユーザー設定・認証情報のローカル保存に使用します。
+            </li>
+            <li>
+              <code>identity</code>: Googleアカウント認証に使用します。
+            </li>
+            <li>
+              <code>alarms</code>: 日替わりローテーション等のタイマー処理に使用します。
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>7. ユーザーの権利</h2>
           <p>ユーザーは、以下の権利を有します。</p>
           <ul className="list-disc pl-6 space-y-2">
             <li>自身の個人情報の開示を請求する権利</li>
             <li>個人情報の訂正・削除を請求する権利</li>
             <li>サブスクリプションをいつでも解約する権利</li>
           </ul>
-          <p>
-            これらの権利を行使する場合は、下記の連絡先までご連絡ください。
+          <p className="mt-4">
+            個人情報の削除を希望される場合は、下記の連絡先までメールにてご連絡ください。本人確認の上、30日以内に対応いたします。
           </p>
         </section>
 
         <section>
-          <h2>7. 未成年者のプライバシー</h2>
+          <h2>8. 未成年者のプライバシー</h2>
           <p>
             本サービスは16歳未満の方を対象としていません。16歳未満の方が個人情報を提供したことが判明した場合、速やかに該当情報を削除します。
           </p>
         </section>
 
         <section>
-          <h2>8. ポリシーの変更</h2>
+          <h2>9. ポリシーの変更</h2>
           <p>
             当サービスは、本プライバシーポリシーを随時更新する場合があります。変更がある場合は、本ページに掲載し、重要な変更についてはメールで通知いたします。
           </p>

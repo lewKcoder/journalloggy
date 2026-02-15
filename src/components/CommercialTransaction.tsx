@@ -136,7 +136,7 @@ export const CommercialTransaction: React.FC<CommercialTransactionProps> = ({
                 サービスURL
               </th>
               <td className="py-4">
-                <a href="/" className="underline underline-offset-4">
+                <a href="/projects/oshi" className="underline underline-offset-4">
                   https://journalloggy.vercel.app/projects/oshi
                 </a>
               </td>
@@ -153,7 +153,12 @@ export const CommercialTransaction: React.FC<CommercialTransactionProps> = ({
               >
                 販売価格
               </th>
-              <td className="py-4">月額298円（税込）</td>
+              <td className="py-4">
+                <p>月額298円（税込）</p>
+                <p className="mt-1 text-sm opacity-75">
+                  本サービスには無料プランと有料プラン（Premiumプラン）があります。上記の販売価格は有料プランの料金です。
+                </p>
+              </td>
             </tr>
             <tr
               className={`border-b ${
@@ -233,9 +238,15 @@ export const CommercialTransaction: React.FC<CommercialTransactionProps> = ({
                 <ul className="list-disc pl-5 space-y-1">
                   <li>ユーザーはいつでもサブスクリプションを解約できます</li>
                   <li>
+                    解約は拡張機能の設定画面内「アカウント」からサブスクリプション管理画面にて手続きできます
+                  </li>
+                  <li>
                     解約後も、当該課金期間の終了時まで有料機能をご利用いただけます
                   </li>
                   <li>日割り計算による返金は行いません</li>
+                  <li>
+                    デジタルサービスの性質上、提供開始後の返品はお受けできません
+                  </li>
                   <li>
                     サービス側の不具合により利用できなかった場合は、個別に対応いたします
                   </li>

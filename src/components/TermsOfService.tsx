@@ -72,7 +72,10 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({
           </p>
           <ul className="list-disc pl-6 space-y-2 mt-4">
             <li>無料プラン: 画像5枚まで登録可能</li>
-            <li>有料プラン（Premiumプラン）: 画像無制限、クラウド同期、日替わりローテーション、記念日エフェクト等の全機能</li>
+            <li>
+              有料プラン（Premiumプラン）:
+              画像無制限、クラウド同期、日替わりローテーション、記念日エフェクト等の全機能
+            </li>
           </ul>
         </section>
 
@@ -113,7 +116,9 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({
             <li>本サービスの運営を妨害する行為</li>
             <li>本サービスのリバースエンジニアリング、改変、再配布</li>
             <li>第三者のアカウントを不正に使用する行為</li>
-            <li>その他、合理的な理由に基づき当サービスが不適切と判断する行為</li>
+            <li>
+              その他、合理的な理由に基づき当サービスが不適切と判断する行為
+            </li>
           </ul>
         </section>
 

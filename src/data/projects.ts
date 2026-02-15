@@ -7,7 +7,7 @@ export const PROJECTS: Project[] = [
     description:
       "推しの画像をショートカットキー一つで表示できるブラウザ拡張。誕生日記念や日替わり表示にも対応",
     screenshot: "/screenshots/oshi.svg",
-    url: "https://example.com",
+    // url: "https://example.com",
     tags: ["React", "Supabase", "Chrome Extension"],
   },
   {
@@ -16,7 +16,7 @@ export const PROJECTS: Project[] = [
     description:
       "Webページの要素をインスペクトし、CSS情報や要素間の距離を視覚的に確認できるChrome拡張機能",
     screenshot: "/screenshots/oculay.png",
-    url: "https://example.com",
+    // url: "https://example.com",
     tags: ["React", "Zustand", "Chrome Extension"],
   },
   {

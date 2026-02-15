@@ -10,7 +10,7 @@ export const PROJECTS: Project[] = [
     // url: "https://example.com",
     tags: ["React", "Supabase", "Chrome Extension"],
     pricing: {
-      price: "¥500",
+      price: "¥298",
       period: "月額（税込）",
       description:
         "有料プランでは追加機能をご利用いただけます。いつでも解約可能です。",

@@ -1,4 +1,3 @@
-import { Github, Twitter, Mail } from "lucide-react";
 import type { Project } from "../types/post";
 
 interface PortfolioGridProps {
@@ -22,29 +21,6 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
           これは個人のためのデジタル・ログです。
           日々の技術的な気づきや、思索の断片をここに記録します。
         </p>
-        <div className="flex items-center space-x-5 mt-10 opacity-40">
-          <a href="#" aria-label="GitHub">
-            <Github
-              size={20}
-              strokeWidth={2.5}
-              className="hover:text-blue-500 cursor-pointer transition-colors"
-            />
-          </a>
-          <a href="#" aria-label="Twitter">
-            <Twitter
-              size={20}
-              strokeWidth={2.5}
-              className="hover:text-blue-400 cursor-pointer transition-colors"
-            />
-          </a>
-          <a href="#" aria-label="Email">
-            <Mail
-              size={20}
-              strokeWidth={2.5}
-              className="hover:text-red-400 cursor-pointer transition-colors"
-            />
-          </a>
-        </div>
       </header>
 
       <div className="h-px w-12 bg-neutral-200 dark:bg-neutral-800 mb-12" />

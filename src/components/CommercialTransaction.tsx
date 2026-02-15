@@ -72,9 +72,7 @@ export const CommercialTransaction: React.FC<CommercialTransactionProps> = ({
               >
                 所在地
               </th>
-              <td className="py-4">
-                請求があった場合に遅滞なく開示いたします
-              </td>
+              <td className="py-4">請求があった場合に遅滞なく開示いたします</td>
             </tr>
             <tr
               className={`border-b ${
@@ -88,9 +86,7 @@ export const CommercialTransaction: React.FC<CommercialTransactionProps> = ({
               >
                 電話番号
               </th>
-              <td className="py-4">
-                請求があった場合に遅滞なく開示いたします
-              </td>
+              <td className="py-4">請求があった場合に遅滞なく開示いたします</td>
             </tr>
             <tr
               className={`border-b ${
@@ -140,11 +136,8 @@ export const CommercialTransaction: React.FC<CommercialTransactionProps> = ({
                 サービスURL
               </th>
               <td className="py-4">
-                <a
-                  href="/"
-                  className="underline underline-offset-4"
-                >
-                  https://journalloggy.com
+                <a href="/" className="underline underline-offset-4">
+                  https://journalloggy.vercel.app/projects/oshi
                 </a>
               </td>
             </tr>
@@ -160,7 +153,7 @@ export const CommercialTransaction: React.FC<CommercialTransactionProps> = ({
               >
                 販売価格
               </th>
-              <td className="py-4">月額500円（税込）</td>
+              <td className="py-4">月額298円（税込）</td>
             </tr>
             <tr
               className={`border-b ${
@@ -192,9 +185,7 @@ export const CommercialTransaction: React.FC<CommercialTransactionProps> = ({
               >
                 支払方法
               </th>
-              <td className="py-4">
-                クレジットカード（Stripe経由）
-              </td>
+              <td className="py-4">クレジットカード（Stripe経由）</td>
             </tr>
             <tr
               className={`border-b ${
@@ -224,9 +215,7 @@ export const CommercialTransaction: React.FC<CommercialTransactionProps> = ({
               >
                 サービス提供時期
               </th>
-              <td className="py-4">
-                決済完了後、直ちにご利用いただけます
-              </td>
+              <td className="py-4">決済完了後、直ちにご利用いただけます</td>
             </tr>
             <tr
               className={`border-b ${
@@ -243,9 +232,13 @@ export const CommercialTransaction: React.FC<CommercialTransactionProps> = ({
               <td className="py-4">
                 <ul className="list-disc pl-5 space-y-1">
                   <li>ユーザーはいつでもサブスクリプションを解約できます</li>
-                  <li>解約後も、当該課金期間の終了時まで有料機能をご利用いただけます</li>
+                  <li>
+                    解約後も、当該課金期間の終了時まで有料機能をご利用いただけます
+                  </li>
                   <li>日割り計算による返金は行いません</li>
-                  <li>サービス側の不具合により利用できなかった場合は、個別に対応いたします</li>
+                  <li>
+                    サービス側の不具合により利用できなかった場合は、個別に対応いたします
+                  </li>
                 </ul>
               </td>
             </tr>
@@ -261,9 +254,7 @@ export const CommercialTransaction: React.FC<CommercialTransactionProps> = ({
               >
                 動作環境
               </th>
-              <td className="py-4">
-                Google Chrome ブラウザ（最新版を推奨）
-              </td>
+              <td className="py-4">Google Chrome ブラウザ（最新版を推奨）</td>
             </tr>
           </tbody>
         </table>

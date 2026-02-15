@@ -4,7 +4,10 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ isDarkMode, onNavigate }) => {
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+  const handleClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    path: string
+  ) => {
     e.preventDefault();
     onNavigate(path);
   };
@@ -41,12 +44,6 @@ export const Footer: React.FC<FooterProps> = ({ isDarkMode, onNavigate }) => {
               className="hover:text-neutral-900 dark:hover:text-white transition-colors"
             >
               Legal
-            </a>
-            <a
-              href="#"
-              className="hover:text-neutral-900 dark:hover:text-white transition-colors"
-            >
-              GitHub
             </a>
           </div>
         </div>

@@ -9,6 +9,7 @@ export const PROJECTS: Project[] = [
     screenshot: "/screenshots/oshi.svg",
     url: "https://example.com",
     tags: ["React", "Supabase", "Chrome Extension"],
+    hasLegal: true,
   },
   {
     id: "prism",

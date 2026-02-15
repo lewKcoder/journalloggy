@@ -1,12 +1,15 @@
 import { ArrowLeft } from "lucide-react";
+import type { Project } from "../types/post";
 
 interface PrivacyPolicyProps {
   isDarkMode: boolean;
+  project: Project;
   onBack: () => void;
 }
 
 export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
   isDarkMode,
+  project,
   onBack,
 }) => {
   return (
@@ -27,7 +30,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
       </button>
 
       <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
-        プライバシーポリシー
+        プライバシーポリシー — {project.name}
       </h1>
       <p
         className={`text-sm mb-12 ${
@@ -55,16 +58,25 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
           <h3 className="font-bold mt-4 mb-2">（1）アカウント情報</h3>
           <ul className="list-disc pl-6 space-y-2">
             <li>メールアドレス（サブスクリプション管理のため）</li>
-            <li>決済に関する情報（Stripeを通じて処理され、当サービスはカード番号等を直接保存しません）</li>
+            <li>
+              決済に関する情報（Stripeを通じて処理され、当サービスはカード番号等を直接保存しません）
+            </li>
           </ul>
           <h3 className="font-bold mt-4 mb-2">（2）利用データ</h3>
           <ul className="list-disc pl-6 space-y-2">
-            <li>拡張機能の利用状況に関する匿名化されたデータ</li>
+            <li>拡張機能の機能利用状況（表示回数、設定変更等の操作ログ。匿名化された状態で収集）</li>
             <li>エラーレポート（サービス改善のため）</li>
+          </ul>
+          <h3 className="font-bold mt-4 mb-2">（4）収集しない情報</h3>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>ブラウジング履歴やアクセス先URLの情報は一切収集しません</li>
+            <li>ユーザーがアップロードした画像データを当サービスのサーバーに送信・保存することはありません（画像データはユーザーのブラウザ内に保存されます）</li>
           </ul>
           <h3 className="font-bold mt-4 mb-2">（3）Cookieおよび類似技術</h3>
           <ul className="list-disc pl-6 space-y-2">
-            <li>当ウェブサイトでは、サービス提供に必要なCookieを使用する場合があります</li>
+            <li>
+              当ウェブサイトでは、サービス提供に必要なCookieを使用する場合があります
+            </li>
           </ul>
         </section>
 
@@ -118,8 +130,12 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
           <h2>5. データの保管・セキュリティ</h2>
           <ul className="list-disc pl-6 space-y-2">
             <li>ユーザーの情報は適切なセキュリティ対策を講じて保管します。</li>
-            <li>決済情報はStripeが管理しており、当サービスはカード番号等の機密情報を直接保管しません。</li>
-            <li>データへの不正アクセス、紛失、破壊を防止するための合理的な措置を講じています。</li>
+            <li>
+              決済情報はStripeが管理しており、当サービスはカード番号等の機密情報を直接保管しません。
+            </li>
+            <li>
+              データへの不正アクセス、紛失、破壊を防止するための合理的な措置を講じています。
+            </li>
           </ul>
         </section>
 
@@ -132,9 +148,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
             <li>サブスクリプションをいつでも解約する権利</li>
             <li>マーケティング目的のメール配信を停止する権利</li>
           </ul>
-          <p>
-            これらの権利を行使する場合は、下記の連絡先までご連絡ください。
-          </p>
+          <p>これらの権利を行使する場合は、下記の連絡先までご連絡ください。</p>
         </section>
 
         <section>
@@ -163,10 +177,10 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
           <p>
             メール:{" "}
             <a
-              href="mailto:your-email@gmail.com"
+              href="mailto:oculay3e7@gmail.com"
               className="underline underline-offset-4"
             >
-              your-email@gmail.com
+              oculay3e7@gmail.com
             </a>
           </p>
         </section>

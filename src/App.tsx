@@ -21,17 +21,24 @@ function resolveRoute(url: string): { view: View; project: Project | null; post:
   const segments = pathname.replace(/^\/|\/$/g, "").split("/");
   const params = new URLSearchParams(search ?? "");
 
-  // /projects/{projectId}/posts?id={postId}
-  if (segments[0] === "projects" && segments[1] && segments[2] === "posts") {
-    const project = PROJECTS.find((p) => p.id === segments[1]) ?? null;
-    const postId = params.get("id");
-    const post = postId ? MOCK_POSTS.find((p) => p.id === postId) ?? null : null;
-    if (project && post) return { view: "post", project, post };
-  }
-
-  // /projects/{projectId}
   if (segments[0] === "projects" && segments[1]) {
     const project = PROJECTS.find((p) => p.id === segments[1]) ?? null;
+
+    // /projects/{projectId}/posts?id={postId}
+    if (project && segments[2] === "posts") {
+      const postId = params.get("id");
+      const post = postId ? MOCK_POSTS.find((p) => p.id === postId) ?? null : null;
+      if (post) return { view: "post", project, post };
+    }
+
+    // /projects/{projectId}/terms
+    if (project && segments[2] === "terms") return { view: "terms", project, post: null };
+    // /projects/{projectId}/privacy
+    if (project && segments[2] === "privacy") return { view: "privacy", project, post: null };
+    // /projects/{projectId}/legal
+    if (project && segments[2] === "legal") return { view: "commercial", project, post: null };
+
+    // /projects/{projectId}
     if (project) return { view: "project", project, post: null };
   }
 
@@ -41,11 +48,6 @@ function resolveRoute(url: string): { view: View; project: Project | null; post:
     const post = postId ? MOCK_POSTS.find((p) => p.id === postId) ?? null : null;
     if (post) return { view: "post", project: null, post };
   }
-
-  // Legal pages
-  if (segments[0] === "terms") return { view: "terms", project: null, post: null };
-  if (segments[0] === "privacy") return { view: "privacy", project: null, post: null };
-  if (segments[0] === "commercial-transaction") return { view: "commercial", project: null, post: null };
 
   return { view: "home", project: null, post: null };
 }
@@ -147,18 +149,18 @@ function App() {
             isDarkMode={isDarkMode}
           />
         )}
-        {view === "terms" && (
-          <TermsOfService isDarkMode={isDarkMode} onBack={navigateToHome} />
+        {view === "terms" && currentProject && (
+          <TermsOfService isDarkMode={isDarkMode} project={currentProject} onBack={() => navigate(`/projects/${currentProject.id}`)} />
         )}
-        {view === "privacy" && (
-          <PrivacyPolicy isDarkMode={isDarkMode} onBack={navigateToHome} />
+        {view === "privacy" && currentProject && (
+          <PrivacyPolicy isDarkMode={isDarkMode} project={currentProject} onBack={() => navigate(`/projects/${currentProject.id}`)} />
         )}
-        {view === "commercial" && (
-          <CommercialTransaction isDarkMode={isDarkMode} onBack={navigateToHome} />
+        {view === "commercial" && currentProject && (
+          <CommercialTransaction isDarkMode={isDarkMode} project={currentProject} onBack={() => navigate(`/projects/${currentProject.id}`)} />
         )}
       </main>
 
-      <Footer isDarkMode={isDarkMode} onNavigate={navigate} />
+      <Footer isDarkMode={isDarkMode} onNavigate={navigate} project={currentProject} />
     </div>
   );
 }

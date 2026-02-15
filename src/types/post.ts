@@ -17,4 +17,5 @@ export interface Project {
   screenshot: string; // URL or path to screenshot
   url?: string;
   tags: string[];
+  hasLegal?: boolean; // true if this project has terms/privacy/legal pages
 }

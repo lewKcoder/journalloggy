@@ -1,12 +1,15 @@
 import { ArrowLeft } from "lucide-react";
+import type { Project } from "../types/post";
 
 interface TermsOfServiceProps {
   isDarkMode: boolean;
+  project: Project;
   onBack: () => void;
 }
 
 export const TermsOfService: React.FC<TermsOfServiceProps> = ({
   isDarkMode,
+  project,
   onBack,
 }) => {
   return (
@@ -27,7 +30,7 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({
       </button>
 
       <h1 className="text-3xl sm:text-4xl font-black tracking-tight mb-4">
-        利用規約
+        利用規約 — {project.name}
       </h1>
       <p
         className={`text-sm mb-12 ${
@@ -53,9 +56,15 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({
           <h2>第2条（定義）</h2>
           <p>本規約において使用する用語の定義は、以下の通りとします。</p>
           <ul className="list-disc pl-6 space-y-2">
-            <li>「本サービス」とは、当サービスが提供するChrome拡張機能「OSHI」およびそれに関連するすべてのサービスを指します。</li>
-            <li>「ユーザー」とは、本サービスを利用するすべての個人を指します。</li>
-            <li>「有料プラン」とは、月額料金を支払うことで利用可能となる機能を指します。</li>
+            <li>
+              「本サービス」とは、当サービスが提供するChrome拡張機能「OSHI」およびそれに関連するすべてのサービスを指します。
+            </li>
+            <li>
+              「ユーザー」とは、本サービスを利用するすべての個人を指します。
+            </li>
+            <li>
+              「有料プラン」とは、月額料金を支払うことで利用可能となる機能を指します。
+            </li>
           </ul>
         </section>
 
@@ -69,7 +78,7 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({
         <section>
           <h2>第4条（利用料金・支払い）</h2>
           <ul className="list-disc pl-6 space-y-2">
-            <li>有料プランの月額料金は500円（税込）です。</li>
+            <li>有料プランの月額料金は298円（税込）です。</li>
             <li>決済はStripeを通じて処理されます。</li>
             <li>料金は毎月自動的に課金されます。</li>
             <li>料金の変更がある場合は、事前にユーザーに通知します。</li>
@@ -80,9 +89,16 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({
           <h2>第5条（解約・返金）</h2>
           <ul className="list-disc pl-6 space-y-2">
             <li>ユーザーはいつでも有料プランを解約できます。</li>
-            <li>解約後も、当該課金期間の終了時まで有料機能をご利用いただけます。</li>
+            <li>
+              解約後も、当該課金期間の終了時まで有料機能をご利用いただけます。
+            </li>
             <li>日割り計算による返金は行いません。</li>
-            <li>サービス側の不具合により利用できなかった場合は、個別に対応いたします。</li>
+            <li>
+              サービス側の不具合により利用できなかった期間がある場合は、合理的な範囲で対応を検討いたします。
+            </li>
+            <li>
+              本サービスはデジタルコンテンツの提供であるため、クーリングオフ制度の適用対象外となります。
+            </li>
           </ul>
         </section>
 
@@ -101,9 +117,15 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({
         <section>
           <h2>第7条（免責事項）</h2>
           <ul className="list-disc pl-6 space-y-2">
-            <li>当サービスは、本サービスの完全性、正確性、有用性等について保証しません。</li>
-            <li>本サービスの利用により生じた損害について、当サービスは一切の責任を負いません。</li>
-            <li>当サービスは、事前の通知なく本サービスの内容を変更、または提供を中止することがあります。</li>
+            <li>
+              当サービスは、本サービスの完全性、正確性、有用性等について保証しません。
+            </li>
+            <li>
+              当サービスに故意または重大な過失がある場合を除き、本サービスの利用により生じた損害について、当サービスは責任を負いません。当サービスに故意または重大な過失がある場合の賠償額は、当該ユーザーが過去1ヶ月間に支払った利用料金の額を上限とします。
+            </li>
+            <li>
+              当サービスは、事前の通知なく本サービスの内容を変更、または提供を中止することがあります。
+            </li>
           </ul>
         </section>
 
@@ -115,14 +137,32 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({
         </section>
 
         <section>
-          <h2>第9条（規約の変更）</h2>
+          <h2>第9条（ユーザーコンテンツ）</h2>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>
+              ユーザーが本サービスにアップロードまたは設定した画像等のコンテンツ（以下「ユーザーコンテンツ」）の著作権は、ユーザーまたは当該コンテンツの権利者に帰属します。
+            </li>
+            <li>
+              当サービスは、ユーザーコンテンツを本サービスの提供（保存・表示）に必要な範囲でのみ利用し、それ以外の目的に使用しません。
+            </li>
+            <li>
+              ユーザーは、自身が正当な権利を有するコンテンツのみをアップロードするものとします。第三者の著作権その他の権利を侵害するコンテンツのアップロードは禁止します。
+            </li>
+            <li>
+              ユーザーコンテンツが第三者の権利を侵害している場合、当サービスは事前の通知なく当該コンテンツを削除できるものとします。これにより生じた損害について、当サービスは責任を負いません。
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>第10条（規約の変更）</h2>
           <p>
-            当サービスは、必要に応じて本規約を変更することがあります。変更後の規約は、本ページに掲載した時点で効力を生じるものとします。重要な変更がある場合は、適切な方法でユーザーに通知します。
+            当サービスは、必要に応じて本規約を変更することがあります。料金の改定その他ユーザーに重大な影響を及ぼす変更を行う場合は、変更の効力発生日の30日前までに、メールまたは本サービス上での通知によりユーザーにお知らせします。その他の変更については、本ページに掲載した時点で効力を生じるものとします。
           </p>
         </section>
 
         <section>
-          <h2>第10条（準拠法・管轄裁判所）</h2>
+          <h2>第11条（準拠法・管轄裁判所）</h2>
           <p>
             本規約の解釈にあたっては日本法を準拠法とします。本サービスに関する紛争については、東京地方裁判所を第一審の専属的合意管轄裁判所とします。
           </p>
@@ -134,16 +174,14 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({
           }`}
         >
           <h2>お問い合わせ</h2>
-          <p>
-            本規約に関するお問い合わせは、以下の連絡先までご連絡ください。
-          </p>
+          <p>本規約に関するお問い合わせは、以下の連絡先までご連絡ください。</p>
           <p>
             メール:{" "}
             <a
-              href="mailto:your-email@gmail.com"
+              href="mailto:oculay3e7@gmail.com"
               className="underline underline-offset-4"
             >
-              your-email@gmail.com
+              oculay3e7@gmail.com
             </a>
           </p>
         </section>

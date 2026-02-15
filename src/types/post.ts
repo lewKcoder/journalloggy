@@ -17,6 +17,7 @@ export interface Project {
   screenshot: string; // URL or path to screenshot
   url?: string;
   tags: string[];
+  legalId?: string;
   pricing?: {
     price: string;
     period: string;

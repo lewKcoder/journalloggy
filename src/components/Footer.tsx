@@ -15,7 +15,7 @@ export const Footer: React.FC<FooterProps> = ({ isDarkMode, onNavigate, project 
     onNavigate(path);
   };
 
-  const legalProject = project?.pricing ? project : null;
+  const legalProject = project?.legalId ? project : null;
 
   return (
     <footer

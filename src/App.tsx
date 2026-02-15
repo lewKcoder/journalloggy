@@ -141,7 +141,6 @@ function App() {
             posts={projectPosts}
             onBack={navigateToHome}
             onPostClick={navigateToPost}
-            onNavigate={navigate}
           />
         )}
         {view === "post" && currentPost && (

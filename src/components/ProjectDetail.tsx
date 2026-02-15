@@ -6,7 +6,6 @@ interface ProjectDetailProps {
   posts: Post[];
   onBack: () => void;
   onPostClick: (post: Post) => void;
-  onNavigate: (path: string) => void;
 }
 
 export const ProjectDetail: React.FC<ProjectDetailProps> = ({
@@ -14,7 +13,6 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
   posts,
   onBack,
   onPostClick,
-  onNavigate,
 }) => {
   const formatDate = (date: string) => date.replace(/-/g, ".");
 
@@ -85,39 +83,6 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
         ))}
       </div>
 
-      <div className="h-px w-12 bg-neutral-200 dark:bg-neutral-800 mt-16 mb-10" />
-      <div className="flex items-center space-x-8 text-[11px] font-mono opacity-30 uppercase tracking-widest">
-        <a
-          href={`/projects/${project.id}/terms`}
-          onClick={(e) => {
-            e.preventDefault();
-            onNavigate(`/projects/${project.id}/terms`);
-          }}
-          className="hover:opacity-100 transition-opacity"
-        >
-          Terms
-        </a>
-        <a
-          href={`/projects/${project.id}/privacy`}
-          onClick={(e) => {
-            e.preventDefault();
-            onNavigate(`/projects/${project.id}/privacy`);
-          }}
-          className="hover:opacity-100 transition-opacity"
-        >
-          Privacy
-        </a>
-        <a
-          href={`/projects/${project.id}/legal`}
-          onClick={(e) => {
-            e.preventDefault();
-            onNavigate(`/projects/${project.id}/legal`);
-          }}
-          className="hover:opacity-100 transition-opacity"
-        >
-          Legal
-        </a>
-      </div>
     </div>
   );
 };

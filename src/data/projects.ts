@@ -17,7 +17,7 @@ export const PROJECTS: Project[] = [
     description:
       "Webページの要素をインスペクトし、CSS情報や要素間の距離を視覚的に確認できるChrome拡張機能",
     screenshot: "/screenshots/oculay.png",
-    // url: "https://example.com",
+    url: "https://chromewebstore.google.com/detail/oculay/paiadpkcoecodopflkdabkaebbilhjcm?authuser=0&hl=ja",
     tags: ["React", "Zustand", "Chrome Extension"],
   },
   {

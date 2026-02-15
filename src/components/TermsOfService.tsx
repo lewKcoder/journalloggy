@@ -72,7 +72,7 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({
             <li>有料プランの月額料金は500円（税込）です。</li>
             <li>決済はStripeを通じて処理されます。</li>
             <li>料金は毎月自動的に課金されます。</li>
-            <li>料金の変更がある場合は、事前にユーザーに通知します。</li>
+            <li>料金の変更がある場合は、変更の30日前までにユーザーに通知します。</li>
           </ul>
         </section>
 
@@ -82,7 +82,7 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({
             <li>ユーザーはいつでも有料プランを解約できます。</li>
             <li>解約後も、当該課金期間の終了時まで有料機能をご利用いただけます。</li>
             <li>日割り計算による返金は行いません。</li>
-            <li>サービス側の不具合により利用できなかった場合は、個別に対応いたします。</li>
+            <li>当サービス側のシステム障害により、連続して24時間以上サービスを利用できなかった場合、該当期間に相当する日数分の利用料金を日割りで返金いたします。</li>
           </ul>
         </section>
 
@@ -99,11 +99,11 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({
         </section>
 
         <section>
-          <h2>第7条（免責事項）</h2>
+          <h2>第7条（免責事項・損害賠償の制限）</h2>
           <ul className="list-disc pl-6 space-y-2">
             <li>当サービスは、本サービスの完全性、正確性、有用性等について保証しません。</li>
-            <li>本サービスの利用により生じた損害について、当サービスは一切の責任を負いません。</li>
             <li>当サービスは、事前の通知なく本サービスの内容を変更、または提供を中止することがあります。</li>
+            <li>当サービスの故意または重大な過失による場合を除き、本サービスの利用により生じた損害に対する賠償額は、当該ユーザーが直近1ヶ月間に支払った利用料金の額を上限とします。</li>
           </ul>
         </section>
 
@@ -117,14 +117,14 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({
         <section>
           <h2>第9条（規約の変更）</h2>
           <p>
-            当サービスは、必要に応じて本規約を変更することがあります。変更後の規約は、本ページに掲載した時点で効力を生じるものとします。重要な変更がある場合は、適切な方法でユーザーに通知します。
+            当サービスは、必要に応じて本規約を変更することがあります。変更がある場合は、変更内容および発効日を本ページに掲載し、発効日の30日前までにユーザーに通知します。通知後30日以内に解約しない場合、変更に同意したものとみなします。
           </p>
         </section>
 
         <section>
           <h2>第10条（準拠法・管轄裁判所）</h2>
           <p>
-            本規約の解釈にあたっては日本法を準拠法とします。本サービスに関する紛争については、東京地方裁判所を第一審の専属的合意管轄裁判所とします。
+            本規約の解釈にあたっては日本法を準拠法とします。本サービスに関する紛争については、さいたま地方裁判所を第一審の専属的合意管轄裁判所とします。
           </p>
         </section>
 
@@ -140,10 +140,10 @@ export const TermsOfService: React.FC<TermsOfServiceProps> = ({
           <p>
             メール:{" "}
             <a
-              href="mailto:your-email@gmail.com"
+              href="mailto:oculay3e7@gmail.com"
               className="underline underline-offset-4"
             >
-              your-email@gmail.com
+              oculay3e7@gmail.com
             </a>
           </p>
         </section>

@@ -51,32 +51,24 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
 
         <section>
           <h2>1. 収集する情報</h2>
-          <p>当サービスは、以下の情報を収集する場合があります。</p>
-          <h3 className="font-bold mt-4 mb-2">（1）アカウント情報</h3>
+          <p>当サービスは、以下の情報を収集します。</p>
           <ul className="list-disc pl-6 space-y-2">
-            <li>メールアドレス（サブスクリプション管理のため）</li>
+            <li>メールアドレス（アカウント管理およびサブスクリプション管理のため）</li>
             <li>決済に関する情報（Stripeを通じて処理され、当サービスはカード番号等を直接保存しません）</li>
           </ul>
-          <h3 className="font-bold mt-4 mb-2">（2）利用データ</h3>
-          <ul className="list-disc pl-6 space-y-2">
-            <li>拡張機能の利用状況に関する匿名化されたデータ</li>
-            <li>エラーレポート（サービス改善のため）</li>
-          </ul>
-          <h3 className="font-bold mt-4 mb-2">（3）Cookieおよび類似技術</h3>
-          <ul className="list-disc pl-6 space-y-2">
-            <li>当ウェブサイトでは、サービス提供に必要なCookieを使用する場合があります</li>
-          </ul>
+          <p className="mt-4">
+            当サービスは、上記以外の利用データ、閲覧履歴、Cookie等の情報は収集しません。
+          </p>
         </section>
 
         <section>
           <h2>2. 情報の利用目的</h2>
-          <p>収集した情報は、以下の目的で利用します。</p>
+          <p>収集した情報は、以下の目的のみで利用します。</p>
           <ul className="list-disc pl-6 space-y-2">
-            <li>本サービスの提供・維持・改善</li>
-            <li>サブスクリプションの管理・決済処理</li>
+            <li>本サービスの提供およびサブスクリプションの管理</li>
+            <li>決済処理</li>
             <li>ユーザーサポートの提供</li>
-            <li>サービスに関する重要な通知の送信</li>
-            <li>不正利用の防止</li>
+            <li>サービスに関する重要な通知の送信（規約変更、障害情報等）</li>
           </ul>
         </section>
 
@@ -94,7 +86,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
 
         <section>
           <h2>4. 第三者サービス</h2>
-          <p>当サービスは、以下の第三者サービスを利用しています。</p>
+          <p>当サービスは、決済処理のためにStripeを利用しています。</p>
           <ul className="list-disc pl-6 space-y-2">
             <li>
               <strong>Stripe</strong> — 決済処理。Stripeのプライバシーポリシーは{" "}
@@ -108,9 +100,6 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
               </a>{" "}
               をご参照ください。
             </li>
-            <li>
-              <strong>Supabase</strong> — データベースおよび認証基盤
-            </li>
           </ul>
         </section>
 
@@ -119,7 +108,6 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
           <ul className="list-disc pl-6 space-y-2">
             <li>ユーザーの情報は適切なセキュリティ対策を講じて保管します。</li>
             <li>決済情報はStripeが管理しており、当サービスはカード番号等の機密情報を直接保管しません。</li>
-            <li>データへの不正アクセス、紛失、破壊を防止するための合理的な措置を講じています。</li>
           </ul>
         </section>
 
@@ -130,7 +118,6 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
             <li>自身の個人情報の開示を請求する権利</li>
             <li>個人情報の訂正・削除を請求する権利</li>
             <li>サブスクリプションをいつでも解約する権利</li>
-            <li>マーケティング目的のメール配信を停止する権利</li>
           </ul>
           <p>
             これらの権利を行使する場合は、下記の連絡先までご連絡ください。
@@ -147,7 +134,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
         <section>
           <h2>8. ポリシーの変更</h2>
           <p>
-            当サービスは、本プライバシーポリシーを随時更新する場合があります。変更がある場合は、本ページに掲載することでお知らせします。重要な変更がある場合は、メール等で通知いたします。
+            当サービスは、本プライバシーポリシーを随時更新する場合があります。変更がある場合は、本ページに掲載し、重要な変更についてはメールで通知いたします。
           </p>
         </section>
 
@@ -163,10 +150,10 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({
           <p>
             メール:{" "}
             <a
-              href="mailto:your-email@gmail.com"
+              href="mailto:oculay3e7@gmail.com"
               className="underline underline-offset-4"
             >
-              your-email@gmail.com
+              oculay3e7@gmail.com
             </a>
           </p>
         </section>

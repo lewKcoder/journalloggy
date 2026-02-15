@@ -1,11 +1,20 @@
 import { useState, useEffect, useSyncExternalStore } from "react";
-import { Navbar, PostDetail, PortfolioGrid, ProjectDetail, Footer } from "./components";
+import {
+  Navbar,
+  PostDetail,
+  PortfolioGrid,
+  ProjectDetail,
+  Footer,
+  TermsOfService,
+  PrivacyPolicy,
+  CommercialTransaction,
+} from "./components";
 import { MOCK_POSTS } from "./data/posts";
 import { PROJECTS } from "./data/projects";
 import type { Post, Project } from "./types/post";
 import "./App.css";
 
-type View = "home" | "project" | "post";
+type View = "home" | "project" | "post" | "terms" | "privacy" | "commercial";
 
 function resolveRoute(url: string): { view: View; project: Project | null; post: Post | null } {
   const [pathname, search] = url.split("?");
@@ -32,6 +41,11 @@ function resolveRoute(url: string): { view: View; project: Project | null; post:
     const post = postId ? MOCK_POSTS.find((p) => p.id === postId) ?? null : null;
     if (post) return { view: "post", project: null, post };
   }
+
+  // Legal pages
+  if (segments[0] === "terms") return { view: "terms", project: null, post: null };
+  if (segments[0] === "privacy") return { view: "privacy", project: null, post: null };
+  if (segments[0] === "commercial-transaction") return { view: "commercial", project: null, post: null };
 
   return { view: "home", project: null, post: null };
 }
@@ -133,9 +147,18 @@ function App() {
             isDarkMode={isDarkMode}
           />
         )}
+        {view === "terms" && (
+          <TermsOfService isDarkMode={isDarkMode} onBack={navigateToHome} />
+        )}
+        {view === "privacy" && (
+          <PrivacyPolicy isDarkMode={isDarkMode} onBack={navigateToHome} />
+        )}
+        {view === "commercial" && (
+          <CommercialTransaction isDarkMode={isDarkMode} onBack={navigateToHome} />
+        )}
       </main>
 
-      <Footer isDarkMode={isDarkMode} />
+      <Footer isDarkMode={isDarkMode} onNavigate={navigate} />
     </div>
   );
 }

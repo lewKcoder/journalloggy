@@ -4,3 +4,6 @@ export { PostDetail } from "./PostDetail";
 export { PortfolioGrid } from "./PortfolioGrid";
 export { ProjectDetail } from "./ProjectDetail";
 export { Footer } from "./Footer";
+export { TermsOfService } from "./TermsOfService";
+export { PrivacyPolicy } from "./PrivacyPolicy";
+export { CommercialTransaction } from "./CommercialTransaction";

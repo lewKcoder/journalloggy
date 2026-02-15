@@ -53,6 +53,28 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
         )}
       </header>
 
+      {project.pricing && (
+        <>
+          <div className="h-px w-12 bg-neutral-200 dark:bg-neutral-800 mb-10" />
+          <p className="text-[12px] font-mono opacity-40 uppercase tracking-widest mb-6">
+            Pricing
+          </p>
+          <div className="rounded-xl border border-neutral-100 dark:border-neutral-800 p-6 mb-16">
+            <div className="flex items-baseline gap-1 mb-2">
+              <span className="text-3xl font-black tracking-tight">
+                {project.pricing.price}
+              </span>
+              <span className="text-sm opacity-50">
+                / {project.pricing.period}
+              </span>
+            </div>
+            <p className="text-sm opacity-50 leading-relaxed">
+              {project.pricing.description}
+            </p>
+          </div>
+        </>
+      )}
+
       <div className="h-px w-12 bg-neutral-200 dark:bg-neutral-800 mb-10" />
 
       <p className="text-[12px] font-mono opacity-40 uppercase tracking-widest mb-8">

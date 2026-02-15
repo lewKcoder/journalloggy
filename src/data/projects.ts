@@ -15,7 +15,7 @@ export const PROJECTS: Project[] = [
     name: "Oculay",
     description:
       "Webページの要素をインスペクトし、CSS情報や要素間の距離を視覚的に確認できるChrome拡張機能",
-    screenshot: "/screenshots/prism.svg",
+    screenshot: "/screenshots/oculay.png",
     url: "https://example.com",
     tags: ["React", "Zustand", "Chrome Extension"],
   },

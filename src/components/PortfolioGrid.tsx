@@ -36,7 +36,7 @@ export const PortfolioGrid: React.FC<PortfolioGridProps> = ({
             className="group cursor-pointer rounded-xl border border-neutral-100/50 dark:border-neutral-800/30 overflow-hidden hover:border-neutral-200 dark:hover:border-neutral-700 transition-colors duration-300"
             onClick={() => onProjectClick(project)}
           >
-            <div className="aspect-[16/9] overflow-hidden bg-neutral-100 dark:bg-neutral-900">
+            <div className="aspect-[16/9] overflow-hidden bg-[#FAFAF8] dark:bg-[#161615]">
               <img
                 src={project.screenshot}
                 alt={project.name}

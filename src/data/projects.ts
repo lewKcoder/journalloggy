@@ -6,7 +6,7 @@ export const PROJECTS: Project[] = [
     name: "OSHI",
     description:
       "推しの画像をショートカットキー一つで表示できるブラウザ拡張。誕生日記念や日替わり表示にも対応",
-    screenshot: "/screenshots/oshi.png",
+    screenshot: "/thumbnail/oshi.png",
     // url: "https://example.com",
     tags: ["React", "Supabase", "Chrome Extension"],
     legalId: "oshi",
@@ -16,7 +16,7 @@ export const PROJECTS: Project[] = [
     name: "Oculay",
     description:
       "Webページの要素をインスペクトし、CSS情報や要素間の距離を視覚的に確認できるChrome拡張機能",
-    screenshot: "/screenshots/oculay.png",
+    screenshot: "/thumbnail/oculay.png",
     url: "https://chromewebstore.google.com/detail/oculay/paiadpkcoecodopflkdabkaebbilhjcm?authuser=0&hl=ja",
     tags: ["React", "Zustand", "Chrome Extension"],
   },
@@ -25,7 +25,7 @@ export const PROJECTS: Project[] = [
     name: "Front Template",
     description:
       "ボタン・フォーム・カードなど、UIパーツのスタイリングを実践的に学べるリファレンスコレクション",
-    screenshot: "/screenshots/front-template.png",
+    screenshot: "/thumbnail/front-template.png",
     url: "https://front-template-rouge.vercel.app/",
     tags: ["Next.js", "SCSS", "Learning"],
   },
@@ -34,7 +34,7 @@ export const PROJECTS: Project[] = [
     name: "Chromix",
     description:
       "色を混ぜると何色になる？その色のカラーパレットは？色の実験と発見を楽しむカラーミキシングツール",
-    screenshot: "/screenshots/chromix.png",
+    screenshot: "/thumbnail/chromix.png",
     url: "https://chromix.xyz/",
     tags: ["Next.js", "SCSS", "Color"],
   },
@@ -43,7 +43,7 @@ export const PROJECTS: Project[] = [
     name: "Typerim",
     description:
       "ビジュアルキーボードとサウンドフィードバックを備えたインタラクティブなタイピング練習アプリ",
-    screenshot: "/screenshots/typerim.png",
+    screenshot: "/thumbnail/typerim.png",
     url: "https://typerim.vercel.app/",
     tags: ["Next.js", "Tailwind", "use-sound"],
   },

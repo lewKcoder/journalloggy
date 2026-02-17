@@ -11,6 +11,9 @@ import {
 } from "./components";
 import { MOCK_POSTS } from "./data/posts";
 import { PROJECTS } from "./data/projects";
+import { BLOG_POSTS } from "./data/blog-posts";
+import { BlogSection } from "./components/BlogSection";
+import { BlogPostDetail } from "./components/BlogPostDetail";
 import type { Post, Project } from "./types/post";
 import "./App.css";
 
@@ -43,6 +46,13 @@ function resolveRoute(url: string): { view: View; project: Project | null; post:
     if (project) return { view: "project", project, post: null };
   }
 
+  // /blog/posts?id={postId}
+  if (segments[0] === "blog" && segments[1] === "posts") {
+    const postId = params.get("id");
+    const post = postId ? BLOG_POSTS.find((p) => p.id === postId) ?? null : null;
+    if (post) return { view: "post", project: null, post };
+  }
+
   // /posts?id={postId} (project-less)
   if (segments[0] === "posts") {
     const postId = params.get("id");
@@ -54,6 +64,7 @@ function resolveRoute(url: string): { view: View; project: Project | null; post:
 }
 
 function postPath(post: Post, project: Project | null): string {
+  if (post.projectId === "blog") return `/blog/posts?id=${post.id}`;
   if (project) return `/projects/${project.id}/posts?id=${post.id}`;
   return `/posts?id=${post.id}`;
 }
@@ -100,15 +111,17 @@ function App() {
     navigate("/");
   };
 
+  const { view, project: currentProject, post: currentPost } = route;
+
   const navigateBackFromPost = () => {
-    if (route.project) {
+    if (currentPost?.projectId === "blog") {
+      navigateToHome();
+    } else if (route.project) {
       navigate(`/projects/${route.project.id}`);
     } else {
       navigateToHome();
     }
   };
-
-  const { view, project: currentProject, post: currentPost } = route;
 
   const projectPosts = currentProject
     ? MOCK_POSTS.filter((p) => p.projectId === currentProject.id)
@@ -130,10 +143,16 @@ function App() {
 
       <main className="max-w-3xl mx-auto px-6 pt-32 pb-24">
         {view === "home" && (
-          <PortfolioGrid
-            projects={PROJECTS}
-            onProjectClick={navigateToProject}
-          />
+          <>
+            <PortfolioGrid
+              projects={PROJECTS}
+              onProjectClick={navigateToProject}
+            />
+            <BlogSection
+              posts={BLOG_POSTS}
+              onPostClick={navigateToPost}
+            />
+          </>
         )}
         {view === "project" && currentProject && (
           <ProjectDetail
@@ -144,11 +163,19 @@ function App() {
           />
         )}
         {view === "post" && currentPost && (
-          <PostDetail
-            post={currentPost}
-            onBack={navigateBackFromPost}
-            isDarkMode={isDarkMode}
-          />
+          currentPost.projectId === "blog" ? (
+            <BlogPostDetail
+              post={currentPost}
+              onBack={navigateBackFromPost}
+              isDarkMode={isDarkMode}
+            />
+          ) : (
+            <PostDetail
+              post={currentPost}
+              onBack={navigateBackFromPost}
+              isDarkMode={isDarkMode}
+            />
+          )
         )}
         {view === "terms" && currentProject && (
           <TermsOfService isDarkMode={isDarkMode} onBack={() => navigate(`/projects/${currentProject.id}`)} />

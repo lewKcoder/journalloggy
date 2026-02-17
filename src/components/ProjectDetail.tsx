@@ -25,7 +25,7 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({
         <ArrowLeft size={16} strokeWidth={2.5} className="mr-2" /> Back
       </button>
 
-      <div className="rounded-xl overflow-hidden dark:border-neutral-800 mb-10">
+      <div className="rounded-xl overflow-hidden bg-[#FAFAF8] dark:bg-[#161615] dark:border-neutral-800 mb-10">
         <img
           src={project.screenshot}
           alt={project.name}

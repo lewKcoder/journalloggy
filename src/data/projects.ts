@@ -6,7 +6,7 @@ export const PROJECTS: Project[] = [
     name: "OSHI",
     description:
       "推しの画像をショートカットキー一つで表示できるブラウザ拡張。誕生日記念や日替わり表示にも対応",
-    screenshot: "/screenshots/oshi.svg",
+    screenshot: "/screenshots/oshi.png",
     // url: "https://example.com",
     tags: ["React", "Supabase", "Chrome Extension"],
     legalId: "oshi",
@@ -25,7 +25,7 @@ export const PROJECTS: Project[] = [
     name: "Front Template",
     description:
       "ボタン・フォーム・カードなど、UIパーツのスタイリングを実践的に学べるリファレンスコレクション",
-    screenshot: "/screenshots/front-template.svg",
+    screenshot: "/screenshots/front-template.png",
     url: "https://front-template-rouge.vercel.app/",
     tags: ["Next.js", "SCSS", "Learning"],
   },

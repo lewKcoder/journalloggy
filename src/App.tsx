@@ -124,7 +124,9 @@ function App() {
   };
 
   const projectPosts = currentProject
-    ? MOCK_POSTS.filter((p) => p.projectId === currentProject.id)
+    ? MOCK_POSTS.filter((p) => p.projectId === currentProject.id).sort(
+        (a, b) => Number(b.id) - Number(a.id)
+      )
     : [];
 
   return (
@@ -149,7 +151,7 @@ function App() {
               onProjectClick={navigateToProject}
             />
             <BlogSection
-              posts={BLOG_POSTS}
+              posts={[...BLOG_POSTS].sort((a, b) => b.id.localeCompare(a.id))}
               onPostClick={navigateToPost}
             />
           </>

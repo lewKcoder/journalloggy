@@ -1,24 +1,113 @@
 import type { Post } from "../types/post";
 
 export const MOCK_POSTS: Post[] = [
-  // {
-  //   id: "1",
-  //   projectId: "color-lab",
-  //   date: "2026-01-22",
-  //   category: "Engineering",
-  //   title: "1 vCPU Linux runner now generally available in GitHub Actions",
-  //   excerpt:
-  //     "GitHub Actionsにおいて、より軽量なワークロードに向けた1 vCPUランナーが利用可能になりました。コスト効率とパフォーマンスのバランスについて考察します。",
-  //   content: `
-  //     <p>ソフトウェア開発の自動化において、リソースの最適化は常に重要な課題です。多くの単純なビルドやテストのワークフローでは、標準的な2 vCPUのマシンはオーバースペックであることが多いのが現実でした。</p>
-  //     <h2>制約がもたらす最適化</h2>
-  //     <p>1 vCPUという制約は、一見不便に見えるかもしれませんが、適切なワークロード（Lint、静的解析、シンプルなデプロイなど）においては、消費クレジットを劇的に抑える強力な選択肢となります。</p>
-  //     <blockquote class="border-l-2 border-neutral-300 dark:border-neutral-700 pl-6 my-10 italic text-neutral-500">
-  //       「優れたデザインとは、これ以上加えるものがないときではなく、これ以上取り除くものがないときに達成される。」
-  //     </blockquote>
-  //     <p>このアップデートは、GitHubが開発者の多様なニーズに応えようとしている姿勢の現れと言えるでしょう。</p>
-  //   `,
-  // },
+  {
+    id: "1",
+    projectId: "acube",
+    date: "2026-03-08",
+    category: "Engineering",
+    title:
+      "セキュリティを忘れるとコンパイルが通らないWebフレームワークを作った",
+    excerpt:
+      "AIが生成するコードのセキュリティスコアが38%→100%になるRustフレームワーク「acube」をリリースした",
+    content: `
+      <p>Rustのサーバーフレームワーク「acube」をリリースした。コンセプトは<strong>「セキュリティを忘れたらコンパイルエラー」</strong>。</p>
+      <p>なぜこんなものを作ったのか、何が嬉しいのかを書いていく。</p>
+
+      <h2>AIが書くコードはセキュリティを忘れる</h2>
+      <p>AIにAPIサーバーを書かせると、動くものは一瞬で出来上がる。ルーティング、バリデーション、DB接続——機能面では申し分ない。</p>
+      <p>が、セキュリティヘッダーは？レート制限は？不明なフィールドの拒否は？CORSの設定は？</p>
+      <p>ほぼ全部抜ける。</p>
+      <p>これはAIが悪いのではなく、フレームワークの設計が悪い。Express、FastAPI、axum——どれもセキュリティが「オプトイン」だからだ。明示的に追加しなければ何も起きない。そしてAIは、聞かれなければ追加しない。</p>
+      <div class="info">
+        <p><strong>オプトインとオプトアウト</strong></p>
+        <p>オプトイン = 自分で有効にしないと機能しない（従来のフレームワーク）。オプトアウト = 最初から有効で、外すには明示的に宣言が必要（acube）。この違いだけでAI生成コードのセキュリティスコアが2.5倍変わる。</p>
+      </div>
+
+      <h2>同じAPIを12回生成して比較した</h2>
+      <p>Express、FastAPI、axum、acubeの4つのフレームワークで同じAPI仕様（ユーザーCRUD + JWT認証）を各3回、計12回AIに生成させてセキュリティを31点満点で採点した。</p>
+      <p>結果はこうだった。</p>
+      <ul>
+        <li>Express: 12.0 / 31（38.7%）</li>
+        <li>FastAPI: 12.3 / 31（39.7%）</li>
+        <li>axum: 11.7 / 31（37.6%）</li>
+        <li><strong>acube: 31.0 / 31（100.0%）</strong></li>
+      </ul>
+      <p>Express、FastAPI、axumは言語もエコシステムも違うのにスコアがほぼ横並びだった。セキュリティスコアの差は言語ではなくフレームワーク設計で決まる。</p>
+      <p>特筆すべきはセキュリティヘッダー（7点満点）の項目で、Express/FastAPI/axumがいずれも0点だったこと。AIは一度もセキュリティヘッダーを自発的に追加しなかった。</p>
+
+      <h2>acubeの設計思想</h2>
+      <p>acubeの基本方針はシンプルで、「セキュリティをオプトアウトにする」だけだ。</p>
+      <p>すべてのエンドポイントに<code>#[acube_security(...)]</code>と<code>#[acube_authorize(...)]</code>の宣言を要求する。書かなければコンパイルが通らない。セキュリティヘッダー7種は全レスポンスに自動付与。レート制限はデフォルトで100リクエスト/分。CORSは全オリジン拒否がデフォルト。入力バリデーションとサニタイズは<code>Valid&lt;T&gt;</code>で自動適用。不明フィールドは常に拒否。</p>
+      <p>逆に言えば、これらを「外す」にはすべて明示的なオプトアウトが必要になる。</p>
+
+      <h2>使い方</h2>
+      <p>典型的なCRUDエンドポイントはこう書く。</p>
+      <pre><code>#[acube_endpoint(POST "/tasks")]
+#[acube_security(jwt)]
+#[acube_authorize(authenticated)]
+async fn create_task(
+    ctx: AcubeContext,
+    input: Valid&lt;CreateTaskInput&gt;,
+) -&gt; AcubeResult&lt;Created&lt;TaskOutput&gt;, TaskError&gt; {
+    let pool = ctx.state::&lt;SqlitePool&gt;();
+    let user_id = ctx.user_id();
+    // ビジネスロジック
+    Ok(Created(task))
+}</code></pre>
+      <div class="info">
+        <p><code>#[acube_security(jwt)]</code>と<code>#[acube_authorize(authenticated)]</code>のどちらかでも消すとコンパイルエラーになる。認証・認可をつけ忘れることが構造的に不可能になっている。</p>
+      </div>
+      <p>公開エンドポイントは「セキュリティなし」を明示する。</p>
+      <pre><code>#[acube_endpoint(GET "/health")]
+#[acube_security(none)]       // 明示的にオプトアウト
+#[acube_authorize(public)]    // 明示的にオプトアウト
+async fn health(_ctx: AcubeContext) -&gt; AcubeResult&lt;Json&lt;HealthStatus&gt;, Never&gt; {
+    Ok(Json(HealthStatus::ok("1.0.0")))
+}</code></pre>
+
+      <h2>入力バリデーションとサニタイズ</h2>
+      <p>スキーマ定義に属性をつけるだけで、バリデーションとサニタイズが自動で走る。</p>
+      <pre><code>#[derive(AcubeSchema, Deserialize)]
+pub struct CreateTaskInput {
+    #[acube(min_length = 1, max_length = 200)]
+    #[acube(sanitize(trim, strip_html))]
+    pub title: String,
+
+    #[acube(one_of = ["low", "medium", "high"])]
+    pub priority: String,
+}</code></pre>
+      <p>HTMLタグの除去、トリム、小文字化といったサニタイズ処理がハンドラに到達する前に完了する。XSSの入り口を構造的に塞いでいる。</p>
+
+      <h2>AI向けの設計</h2>
+      <p>acubeはAIコーディングツールとの連携を前提に設計した。<code>cargo acube init</code>を実行するとClaude Code、Cursor、GitHub Copilot、Codex、Gemini、Windsurf向けのインストラクションファイルが自動生成される。</p>
+      <p>これらのファイルにはacubeのルールが埋め込まれているため、AIはトレーニングデータに依存せずともacubeを正しく使えるようになる。</p>
+      <div class="info">
+        <p><strong>対応しているAIツール</strong></p>
+        <p>Claude Code / Cursor / GitHub Copilot / OpenAI Codex / Google Gemini / Windsurf</p>
+      </div>
+
+      <h2>パフォーマンス</h2>
+      <p>セキュリティを自動適用すると遅くなりそうだが、実測ではそこまでではなかった。</p>
+      <ul>
+        <li>素のaxum: 209,166 req/s</li>
+        <li>acube最小構成: 189,603 req/s（90.6%）</li>
+        <li>acubeフル構成（JWT + バリデーション + レート制限）: 174,181 req/s（83.3%）</li>
+      </ul>
+      <p>6段のセキュリティパイプラインを通しても17%程度のオーバーヘッド。p99レイテンシは1ms未満に収まっている。</p>
+      <div class="info">
+        <p><strong>6段のセキュリティパイプライン</strong></p>
+        <p>Route Resolution → Security Headers & Rate Limit → Auth → Input Validation & Sanitization → Handler → Error Formatting。この全段を通過してもスループットは素のaxumの83%を維持する。</p>
+      </div>
+
+      <h2>acubeがやらないこと</h2>
+      <p>acubeはフルスタックフレームワークではない。DB/ORM、セッション管理、ファイルアップロード、WebSocket、GraphQL——これらは含まない。axumで使えるものはacubeでもそのまま使える。セキュリティレイヤーだけを担当し、それ以外は既存エコシステムに委ねる設計にしている。</p>
+
+      <h2>リリース</h2>
+      <p>v0.1.0を2026年2月22日にリリースした。MITライセンス。244のテストケースを書いている。</p>
+      <p>AIがコードを書く時代に、フレームワーク側がセキュリティを強制するのは自然な進化だと思っている。「忘れない」のではなく「忘れられない」仕組みにすることで、人間もAIもセキュアなコードを書ける。</p>
+    `,
+  },
   // {
   //   id: "2",
   //   projectId: "typerim",

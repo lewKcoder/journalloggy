@@ -2,12 +2,21 @@ import type { Project } from "../types/post";
 
 export const PROJECTS: Project[] = [
   {
+    id: "acube",
+    name: "acube",
+    description: "AIによるAIのためのAIファーストサーバーサイドフレームワーク",
+    screenshot: "/thumbnail/acube.png",
+    url: "https://acubeframework.com/",
+    tags: ["Rust", "Server side framework"],
+    legalId: "oshi",
+  },
+  {
     id: "oshi",
     name: "OSHI",
     description:
       "推しの画像をショートカットキー一つで表示できるブラウザ拡張。誕生日記念や日替わり表示にも対応",
     screenshot: "/thumbnail/oshi.png",
-    // url: "https://example.com",
+    url: "https://chromewebstore.google.com/detail/oshi-%E2%80%94-%E3%82%B9%E3%83%86%E3%83%AB%E3%82%B9%E6%8E%A8%E3%81%97%E6%B4%BB%E3%83%84%E3%83%BC%E3%83%AB/enhpakgmmocopfeojihepklgaghfhfmg?authuser=0&hl=ja",
     tags: ["React", "Supabase", "Chrome Extension"],
     legalId: "oshi",
   },
